@@ -19,6 +19,11 @@ const postRouter = require('./routes/postRouter')
 const userRouter = require('./routes/userRouter')
 const commentRouter = require('./routes/commentRouter')
 
+app.get('/', (req, res) => {
+    res.send({msg: "Welcome to Amaarah's Portfolio Backend"});
+});
+
+
 app.use('/posts', postRouter)
 app.use('/users', userRouter)
 // app.use('/comment', commentRouter)
