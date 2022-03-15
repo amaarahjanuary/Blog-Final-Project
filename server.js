@@ -1,5 +1,5 @@
 
-// require('dotenv').config();
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
@@ -20,7 +20,9 @@ const userRouter = require('./routes/userRouter')
 const commentRouter = require('./routes/commentRouter')
 
 app.get('/', (req, res) => {
-    res.send({msg: "Welcome to Amaarah's Portfolio Backend"});
+    res.send( "Welcome to Amaarah's Blog Backend. Use /users to view all users. Use /posts to view all posts"
+    );
+
 });
 
 
