@@ -21,14 +21,15 @@ router.get('/:id', getPost, (req, res, next) => {
 
 //Creating A Post
 router.post('/', auth, async (req, res, next) => {
-    const {title , category, img, text, desc} = req.body
+    const {title , category, img, text, desc, author} = req.body
     const post = new Post({
         title,
         category,
         text,
         desc,
         creator: req.user._id,
-        img
+        img,
+        author
     });
   try {
     const newPost = await post.save();
@@ -42,12 +43,13 @@ router.post('/', auth, async (req, res, next) => {
 router.put('/:id', auth, getPost, async (req, res, next) => {
     if (req.user._id !== res.post.creator)
         res.status(400).json({ msg: "You are not that guy pal" })
-    const {title, category, img, text, desc} = req.body;
+    const {title, category, img, text, desc, author} = req.body;
     if (title) { res.post.title = title };
     if (category) { res.post.category = category };
     if (img) { res.post.img = img };
     if (text) { res.post.text = text };
     if (desc) { res.post.desc = desc };
+    if (author) { res.post.author = author };
     try {
         const updatedPost = await res.post.save();
         res.status(201).json(updatedPost);
