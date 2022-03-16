@@ -44,7 +44,7 @@ if (await bcrypt.compare(password, user.password)) {
 
 // REGISTER user
 router.post("/", async (req, res, next) => {
-const { name, email, contactNumber, password } = req.body;
+const { name, email, contact, password } = req.body;
 
 const salt = await bcrypt.genSalt();
 const hashedPassword = await bcrypt.hash(password, salt);
@@ -52,7 +52,7 @@ const hashedPassword = await bcrypt.hash(password, salt);
 const user = new User({
     name,
     email,
-    contactNumber,
+    contact,
     password: hashedPassword,
 });
 
@@ -75,9 +75,9 @@ try {
   
 // UPDATE a user
 router.put("/:id", getUser, async (req, res, next) => {
-const { name, contactNumber, password, avatar } = req.body;
+const { name, contact, password, avatar } = req.body;
 if (name) res.user.name = name;
-if (contactNumber) res.user.contact = contactNumber;
+if (contact) res.user.contact = contact;
 if (avatar) res.user.avatar = avatar;
 if (password) {
     const salt = await bcrypt.genSalt();

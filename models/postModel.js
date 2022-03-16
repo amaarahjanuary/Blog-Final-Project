@@ -13,6 +13,14 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    desc: {
+        type: String,
+        required: true,
+    },
+    text: {
+        type: String,
+        required: true,
+    },
     creator: {
         type: String,
         required: true,
