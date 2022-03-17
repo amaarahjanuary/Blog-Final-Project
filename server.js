@@ -20,7 +20,7 @@ const userRouter = require('./routes/userRouter')
 const commentRouter = require('./routes/commentRouter')
 
 app.get('/', (req, res) => {
-    res.send( "Welcome to Amaarah's Blog Backend. Use /users to view all users. Use /posts to view all posts"
+    res.send( "Welcome to Amaarah's Blog Backend. Use /users to view all users. Use /users/:id to view a single user. Use /posts to view all posts. Use /posts/:id to view a single post."
     );
 
 });
