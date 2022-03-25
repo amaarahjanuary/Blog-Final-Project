@@ -28,4 +28,4 @@ async function getPost(req, res, next) {
 }
 
 
-module.exports = { getUser, getPost };
+module.exports = { getUser, getPost};

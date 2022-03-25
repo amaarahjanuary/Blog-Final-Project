@@ -18,6 +18,7 @@ app.use(cors());
 const postRouter = require('./routes/postRouter')
 const userRouter = require('./routes/userRouter')
 const commentRouter = require('./routes/commentRouter')
+const contactRouter = require('./routes/contactRouter')
 
 app.get('/', (req, res) => {
     res.send( "Welcome to Amaarah's Blog Backend. Use /users to view all users. Use /posts to view all posts"
@@ -29,5 +30,6 @@ app.get('/', (req, res) => {
 app.use('/posts', postRouter)
 app.use('/users', userRouter)
 // app.use('/comment', commentRouter)
+app.use('/contact', contactRouter)
 
 app.listen(process.env.PORT||7200, () => console.log('Server Started'))

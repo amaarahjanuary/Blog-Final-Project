@@ -18,7 +18,6 @@ router.get("/", async (req, res) => {
 // GET one user
 router.get("/:id", getUser, (req, res, next) => {
 res.send(res.user);
-console.log(user)
 });
 
 // SIGN-IN user with email & password
