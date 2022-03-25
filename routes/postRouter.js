@@ -4,7 +4,7 @@ const router = express.Router();
 const auth = require('../middleware/auth')
 const { getPost } = require('../middleware/finders')
 
-// Getting All posts
+// Getting All
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.find();
@@ -21,19 +21,17 @@ router.get('/:id', getPost, (req, res, next) => {
 
 //Creating A Post
 router.post('/', auth, async (req, res, next) => {
-    const {title , category, img, text, description, author} = req.body
+    const {title , category, img, text, desc} = req.body
     const post = new Post({
         title,
         category,
         text,
-        description,
+        desc,
         creator: req.user._id,
-        img,
-        author
+        img
     });
   try {
     const newPost = await post.save();
-    console.log()
     res.status(201).json(newPost);
   } catch (err) {
     res.status(400).json({ msg: err.message });
@@ -44,13 +42,12 @@ router.post('/', auth, async (req, res, next) => {
 router.put('/:id', auth, getPost, async (req, res, next) => {
     if (req.user._id !== res.post.creator)
         res.status(400).json({ msg: "You are not that guy pal" })
-    const {title, category, img, text, description, author} = req.body;
+    const {title, category, img, text, desc} = req.body;
     if (title) { res.post.title = title };
     if (category) { res.post.category = category };
     if (img) { res.post.img = img };
     if (text) { res.post.text = text };
-    if (description) { res.post.description = description };
-    if (author) { res.post.author = author };
+    if (desc) { res.post.desc = desc };
     try {
         const updatedPost = await res.post.save();
         res.status(201).json(updatedPost);

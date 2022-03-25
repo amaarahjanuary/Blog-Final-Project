@@ -13,7 +13,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    description: {
+    desc: {
         type: String,
         required: true,
     },
@@ -24,11 +24,7 @@ const postSchema = new mongoose.Schema({
     creator: {
         type: String,
         required: true,
-    },
-    author: {
-        type: String,
-        required: false,
-    },
+    }
 
 });
 
