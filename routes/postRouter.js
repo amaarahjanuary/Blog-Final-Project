@@ -4,7 +4,7 @@ const router = express.Router();
 const auth = require('../middleware/auth')
 const { getPost } = require('../middleware/finders')
 
-// Getting All
+// Getting All posts
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.find();
